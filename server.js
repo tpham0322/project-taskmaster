@@ -6,6 +6,8 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/connection");
 const userRoutes = require("./routes/api/userRoutes");
+const projectRoutes = require("./routes/api/projectRoutes");
+const taskRoutes = require("./routes/api/taskRoutes");
 
 dotenv.config();
 
@@ -22,6 +24,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/api/users", userRoutes);
+app.use("/api/projects", projectRoutes);
+app.use("/api", taskRoutes);
 
 // Test route
 app.get("/", (req, res) => {
