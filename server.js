@@ -5,6 +5,7 @@ dns.setServers(["8.8.8.8", "8.8.4.4"]);
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/connection");
+const userRoutes = require("./routes/api/userRoutes");
 
 dotenv.config();
 
@@ -18,6 +19,9 @@ connectDB();
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Routes
+app.use("/api/users", userRoutes);
 
 // Test route
 app.get("/", (req, res) => {
